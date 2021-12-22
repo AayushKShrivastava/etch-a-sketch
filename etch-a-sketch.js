@@ -1,8 +1,8 @@
 const container = document.querySelector('#container');
 container.setAttribute('style', ' cursor: pointer; height:600px; width: 600px; background-color: black;display: flex; flex-wrap: wrap');
 
-createGrid(16);
-mouseOver();
+//createGrid(16);
+//mouseOverDraw();
 
 const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', () =>{
@@ -10,14 +10,32 @@ clearButton.addEventListener('click', () =>{
     divs.forEach((div) =>{
         container.removeChild(div);
     });
-    m = Number(prompt("Enter the Number of Pexels on Both Side (< 100)"));
-    if(m < 100){
-        createGrid(m);
-        mouseOver();
-    }
-    else
-        alert("Please Enter a Number Less Than 100");
 });
+
+const draw = document.querySelector('.draw');
+const pexelInput = document.querySelector('input');
+pexelInput.value = 16;
+draw.addEventListener('click', () => {
+    //m = Number(prompt("Enter the Number of Pexels on Both Side (< 100)", "16"));
+    
+    if(pexelInput.value == 0){
+        createGrid(16);
+    }
+    else if(pexelInput.value < 100){
+        createGrid(pexelInput.value);
+    }
+    else{
+        alert("Please Enter a Number Less Than 100");
+        pexelInput.value = 16;
+        createGrid(16);
+    }
+    mouseOverDraw();
+});
+
+const erase = document.querySelector('.erase');
+erase.addEventListener('click', () => {
+    mouseOverErase();
+})
 
 //functions
 
@@ -31,12 +49,26 @@ function createGrid(n){
     }
 }
 
-function mouseOver(){
+function mouseOverDraw(){
     let divs = document.querySelectorAll('.div');
     divs.forEach((div) => {
         div.addEventListener('mouseout', () =>{
         /*div.setAttribute('style', 'background-color: black');*/
-        div.classList.add('over');
+        if(div.classList.contains('overErase'))
+            div.classList.remove('overErase');
+        div.classList.add('overDraw');
+        });
+    });
+}
+
+function mouseOverErase(){
+    let divs = document.querySelectorAll('.div');
+    divs.forEach((div) => {
+        div.addEventListener('mouseout', () =>{
+        /*div.setAttribute('style', 'background-color: black');*/
+        if(div.classList.contains('overDraw'))
+            div.classList.remove('overDraw');
+        div.classList.add('overErase');
         });
     });
 }
