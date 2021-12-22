@@ -30,6 +30,7 @@ const draw = document.querySelector('.draw');
 draw.addEventListener('click', () => {
     mode.textContent = 'Draw Mode';
     pexelInput.disabled = true;
+    
     mouseOverDraw();
 });
 
@@ -53,7 +54,7 @@ function createGrid(n){
 function mouseOverDraw(){
     let divs = document.querySelectorAll('.div');
     divs.forEach((div) => {
-        div.addEventListener('mouseout', () =>{
+        div.addEventListener('mouseover', () =>{
         if(div.classList.contains('overErase'))
             div.classList.remove('overErase');
         pexelInput.disabled = true;
@@ -65,7 +66,7 @@ function mouseOverDraw(){
 function mouseOverErase(){
     let divs = document.querySelectorAll('.div');
     divs.forEach((div) => {
-        div.addEventListener('mouseout', () =>{
+        div.addEventListener('mouseover', () =>{
         if(div.classList.contains('overDraw'))
             div.classList.remove('overDraw');
         if(document.querySelectorAll('.overDraw').length == 0)

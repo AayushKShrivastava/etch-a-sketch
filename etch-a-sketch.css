@@ -15,7 +15,8 @@ h1{
 .mode{
     padding-right: 15px;
     color: black;
-    background-color: yellow;
+    font-weight: bold;
+    background-color: burlywood;
     font-size: large;
     height: 30px;
     display: flex;
