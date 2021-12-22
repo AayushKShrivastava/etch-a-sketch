@@ -12,8 +12,29 @@ h1{
     padding: 20px;
 }
 
+.mode{
+    padding-right: 15px;
+    color: black;
+    background-color: yellow;
+    font-size: large;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+label{
+    color: white;
+    font-size: large;
+}
+
+input{
+    font-size: large;
+    text-align: center;
+}
+
 .content{
-    margin-top: 20px;
+    margin-top: 0px;
     display: flex;
     gap: 100px;
     height: 700px;
